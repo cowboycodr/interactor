@@ -8,11 +8,17 @@ class Interactor:
         if self.__nospaces and (url.count(' ') != 0):
             raise Exception(f'Interactor does not support spaces! "{url}"')
 
-    def get(self, url: str, basepath: bool = True):
+    def get(self, url: str, basepath: bool = True, headers: dict = {}):
         if not url.startswith('http') and basepath:
             url = self.__basepath + url
         
-        return requests.get(url)
+        return requests.get(url, headers=headers).json()
+    
+    def post(self, url: str, body, headers:dict = {}, basepath:bool = True):
+        if not url.startswith('http') and basepath:
+            url = self.__basepath + url
+            
+        return requests.post(url, body, headers=headers).json()
 
 def str_to_dict(string):
     string = string.replace('false', 'False').replace('true', 'True').replace('null', 'None')
