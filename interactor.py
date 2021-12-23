@@ -25,7 +25,15 @@ class Interactor:
         url = self.url.join_branches(branches)
 
         return Response(url, "GET")
+    
+    def post(self, branches: "str | list[str]", body, headers={}) -> Response:
+        if isinstance(branches, str):
+            branches = [branches]
 
+        url = self.url.join_branches(branches)
+
+        return requests.post(url, body, headers=headers)
+    
     @property
     def url(self) -> str:
         return self.__url
