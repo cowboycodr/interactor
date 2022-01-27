@@ -1,0 +1,8 @@
+[package]
+name = "interactor"
+version = "0.0.1"
+description = ""
+
+[modules]
+choam = "*"
+requests = "*"
