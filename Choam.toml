@@ -1,8 +1,11 @@
 [package]
-name = "interactor"
+name = "api-interactor"
+repo = "https://github.com/cowboycodr/interactor"
 version = "0.0.1"
 description = ""
 
 [modules]
 choam = "*"
+wheel = "*"
 requests = "*"
+twine = "*"
